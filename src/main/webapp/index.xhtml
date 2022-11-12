@@ -5,12 +5,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html" >
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <div>TODO write content</div>
+        <p:panel header="Título Principal" >
+            <h:form>
+                <p:panelGrid columns="1" >
+                    <p:inputText placeholder="Nome" value="#{minhaClasseView.produto.nome}" />
+                    <p:selectOneMenu value="#{minhaClasseView.produto.tipoUnidade}" >
+                        <f:selectItem itemLabel="(Selecione)" noSelectionOption="true" />
+                        <f:selectItems value="#{minhaClasseView.tiposUnidades}" var="i" itemLabel="#{i.label}" />
+                    </p:selectOneMenu>
+                </p:panelGrid>
+            </h:form>
+        </p:panel>
     </h:body>
 </html>

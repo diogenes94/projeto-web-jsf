@@ -5,6 +5,7 @@
  */
 package br.com.unincor.web.controller;
 
+import br.com.unincor.sistemacomanda.model.dao.ProdutoDao;
 import br.com.unincor.sistemacomanda.model.domain.Produto;
 import br.com.unincor.sistemacomanda.model.domain.TipoUnidade;
 import java.io.Serializable;
@@ -30,5 +31,17 @@ public class MinhaClasseView implements Serializable {
     
     public List<TipoUnidade> getTiposUnidades() {
         return Arrays.asList(TipoUnidade.values());
+    }
+    
+    public void teste() {
+        Produto produto = new Produto();
+        //produto.setId(1l);
+        produto.setNome("Meu 5 produto");
+        produto.setPreco(5000.);
+        produto.setEstoque(100.);
+        produto.setTipoUnidade(TipoUnidade.UN);
+        ProdutoDao produtoDao = new ProdutoDao();
+        
+        produtoDao.save(produto);
     }
 }

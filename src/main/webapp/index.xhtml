@@ -14,18 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     </h:head>
     <h:body>
         <p:panel header="Título Principal" >
-            <h:form>
-                <p:panelGrid columns="1" >
-                    <p:inputText placeholder="Nome" value="#{minhaClasseView.produto.nome}" />
-                    <p:selectOneMenu value="#{minhaClasseView.produto.tipoUnidade}" >
-                        <f:selectItem itemLabel="(Selecione)" noSelectionOption="true" />
-                        <f:selectItems value="#{minhaClasseView.tiposUnidades}" var="i" itemLabel="#{i.label}" />
-                    </p:selectOneMenu>
-                </p:panelGrid>
-            </h:form>
-            <h:form>
-                <p:commandButton value="Teste" actionListener="#{minhaClasseView.teste()}" />
-            </h:form>
+            <a href="${request.contextPath}/produto.jsf" >Produtos</a>
         </p:panel>
     </h:body>
 </html>

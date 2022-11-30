@@ -8,6 +8,7 @@ import br.com.unincor.sistemacomanda.model.dao.ProdutoDao;
 import br.com.unincor.sistemacomanda.model.domain.Produto;
 import br.com.unincor.sistemacomanda.model.domain.TipoUnidade;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -27,7 +28,13 @@ import lombok.Setter;
 @ViewScoped
 public class ProdutoBean implements Serializable {
     
-    private Produto produto = new Produto();
+    private Produto produto;
+    private List<Produto> produtos;
+    private List<Produto> produtosFilter = new ArrayList<>();
+
+    public ProdutoBean() {
+        pesquisar();
+    }    
     
     public void salvar() {
         ProdutoDao produtoDao = new ProdutoDao();
@@ -37,15 +44,29 @@ public class ProdutoBean implements Serializable {
                 new FacesMessage("Salvo com sucesso!"));
         /* Chamamos o cancelar para limpar o nosso objeto após salvar */
         cancelar();
+        pesquisar();
     }
     
     /* Ao cancelar criamos um novo produto para que a tela atualize */
     public void cancelar() {
+        produto = null;
+    }
+    
+    public void novoProduto() {
         produto = new Produto();
     }
     
     public List<TipoUnidade> getTiposUnidades() {
         return Arrays.asList(TipoUnidade.values());
+    }
+    
+    public void pesquisar() {
+        ProdutoDao produtoDao = new ProdutoDao();
+        this.produtos = produtoDao.findAll();
+    }
+    
+    public void editar(Produto produto) {
+        this.produto = produto;
     }
     
 }

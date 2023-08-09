@@ -27,6 +27,7 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>-->
         <property name="connection.pool_size">100</property>
         <mapping class="br.com.unincor.sistemacomanda.model.domain.Produto" />
+        <mapping class="br.com.unincor.sistemacomanda.model.domain.Cliente" />
         <!--<mapping class="br.com.pck0002.teste.hibernate.Student" />-->
     </session-factory>
 </hibernate-configuration>
